@@ -1,5 +1,5 @@
 #status
-  should: %s == [:server_update_prohibited, :server_transfer_prohibited]
+  should: %s == [:out_of_zone, :expired]
 
 #available?
   should: %s == false

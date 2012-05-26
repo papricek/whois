@@ -1,0 +1,69 @@
+%  (c) 2006-2011 CZ.NIC, z.s.p.o.
+%
+% Intended use of supplied data and information
+%
+% Data contained in the domain name register, as well as information
+% supplied through public information services of CZ.NIC association,
+% are appointed only for purposes connected with Internet network
+% administration and operation, or for the purpose of legal or other
+% similar proceedings, in process as regards a matter connected
+% particularly with holding and using a concrete domain name.
+%
+% Full text available at:
+% http://www.nic.cz/page/306/intended-use-of-supplied-data-and-information/
+%
+% See also a search service at http://www.nic.cz/whois/
+% 
+% 
+% Whoisd Server Version: 3.4.0
+% Timestamp: Sat May 26 13:01:30 2012
+
+domain:       bohemiajazzfest.cz
+registrant:   SB:SUB000019935-ZONER
+admin-c:      FORPSI-8DW-S418514
+nsset:        NSSID:VSHOSTING-INIZIO
+registrar:    REG-INTERNET-CZ
+status:       Delete prohibited
+status:       Registrant change prohibited
+status:       Domain blocked
+registered:   11.08.2005 18:15:00
+changed:      06.04.2012 15:36:52
+expire:       11.08.2012
+
+contact:      SB:SUB000019935-ZONER
+name:         Karel Czaban
+address:      Lublanska 55
+address:      Praha 2
+address:      120 00
+address:      CZ
+e-mail:       czaban@twiga.cz
+registrar:    REG-ZONER
+created:      11.08.2005 18:05:00
+
+contact:      FORPSI-8DW-S418514
+org:          INIZIO Internet Media s.r.o.
+name:         Dalibor Jaroš
+address:      Kněžskodvorská 2632
+address:      České Budějovice
+address:      370 04
+address:      CZ
+registrar:    REG-INTERNET-CZ
+created:      27.02.2012 09:52:07
+
+nsset:        NSSID:VSHOSTING-INIZIO
+nserver:      inizio.vshosting.cz
+nserver:      ns2.vshosting.cz
+tech-c:       VSHOSTING
+registrar:    REG-IGNUM
+created:      04.11.2011 06:13:02
+
+contact:      VSHOSTING
+org:          VSHosting s.r.o.
+name:         Damir Špoljarič
+address:      Tiskařská 10
+address:      Praha 10
+address:      108 00
+address:      CZ
+registrar:    REG-IGNUM
+created:      04.10.2007 10:34:01
+changed:      17.05.2011 15:16:10

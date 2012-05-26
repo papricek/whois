@@ -1,5 +1,5 @@
 #status
-  should: %s == [:server_update_prohibited, :server_transfer_prohibited]
+  should: %s == [:delete_candidate]
 
 #available?
   should: %s == false

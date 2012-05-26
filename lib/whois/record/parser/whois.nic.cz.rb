@@ -30,12 +30,30 @@ module Whois
         property_supported :status do
           status = content_for_scanner.scan(/status:\s+(.+)\n/).flatten.map do |line|
             case line.downcase
-              when "paid and in zone", "update prohibited"
+              when "paid and in zone"
                 :registered
+              when "delete prohibited"
+                :server_delete_prohibited
+              when "registration renewal prohibited"
+                :server_renew_prohibited
               when "sponsoring registrar change prohibited"
                 :server_transfer_prohibited
+              when "update prohibited"
+                :server_update_prohibited
+              when "registrant change prohibited"
+                :server_registrant_change_prohibited
+              when "domain blocked"
+                :server_blocked
+              when "domain is administratively kept out of zone"
+                :server_out_zone_manual
+              when "domain is administratively kept in zone"
+                :server_in_zone_manual
               when "expired"
                 :expired
+              when "domain is not generated into zone"
+                :out_of_zone
+              when "to be deleted"
+                :delete_candidate
               else
                 Whois.bug!(ParserError, "Unknown status `#{line}'.")
             end
