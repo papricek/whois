@@ -8,7 +8,7 @@
 
 
 require 'whois/record/parser/base'
-
+require 'whois/record/scanners/whois.nic.cz.rb'
 
 module Whois
   class Record
@@ -19,17 +19,26 @@ module Whois
       #
       # Parser for the whois.nic.cz server.
       #
-      # NOTE: This parser is just a stub and provides only a few basic methods
-      # to check for domain availability and get domain status.
-      # Please consider to contribute implementing missing methods.
-      # See WhoisNicIt parser for an explanation of all available methods
-      # and examples.
-      #
       class WhoisNicCz < Base
+        include Scanners::Ast
+
+        property_supported :disclaimer do
+          node "field:disclaimer"
+        end
+
+        property_supported :domain do
+          node("domain") { |str| str.downcase }
+        end
+
+        property_not_supported :domain_id
+        property_not_supported :referral_whois
+        property_not_supported :referral_url
 
         property_supported :status do
-          status = content_for_scanner.scan(/status:\s+(.+)\n/).flatten.map do |line|
+          Array.wrap(node("status")).map do |line|
             case line.downcase
+              when "no entries found"
+                :available
               when "paid and in zone"
                 :registered
               when "delete prohibited"
@@ -58,44 +67,97 @@ module Whois
                 Whois.bug!(ParserError, "Unknown status `#{line}'.")
             end
           end
-          status.empty? ? [:available] : status
         end
 
         property_supported :available? do
-          !!(content_for_scanner =~ /^%ERROR:101: no entries found/)
+          !!node("status:available")
         end
 
         property_supported :registered? do
           !available?
         end
 
-
         property_supported :created_on do
-          if content_for_scanner =~ /registered:\s+(.+?)\n/
-            Time.parse($1)
-          end
+          node("registered") { |str| Time.parse(str) }
         end
 
         property_supported :updated_on do
-          if content_for_scanner =~ /changed:\s+(.+?)\n/
-            Time.parse($1)
-          end
+          node("changed") { |str| Time.parse(str) }
         end
 
         property_supported :expires_on do
-          if content_for_scanner =~ /expire:\s+(.+?)\n/
-            Time.parse($1)
+          node("expire") { |str| Time.parse(str) }
+        end
+
+        property_supported :registrar do
+          node("registrar") do |str|
+            Record::Registrar.new(
+              :id           => str,
+              :name         => str
+            )
           end
         end
 
+        property_supported :registrant_contacts do
+          build_contact(node("registrant"), Whois::Record::Contact::TYPE_REGISTRANT)
+        end
+
+        property_supported :admin_contacts do
+          Array.wrap(node("admin-c")).collect do |handle|
+            build_contact(handle, Whois::Record::Contact::TYPE_ADMIN)
+          end
+        end
+
+        property_supported :technical_contacts do
+          contacts = []
+          node("nsset-#{node('nsset')}") {|str| contacts << str["tech-c"]}
+          contacts.flatten.collect { |c|
+            build_contact(c, Whois::Record::Contact::TYPE_TECHNICAL)
+          }
+        end
 
         property_supported :nameservers do
-          content_for_scanner.scan(/nserver:\s+(.+)\n/).flatten.map do |line|
-            if line =~ /(.+) \((.+)\)/
-              Record::Nameserver.new($1, *$2.split(", "))
-            else
-              Record::Nameserver.new(line.strip)
+          node("nsset-#{node('nsset')}") do |str|
+            str['nserver'].flatten.map do |line|
+              if line =~ /(.+) \((.+)\)/
+                Record::Nameserver.new($1, *$2.split(", "))
+              else
+                Record::Nameserver.new(line.strip)
+              end
             end
+          end
+        end
+
+        # Initializes a new {Scanners::WhoisNicCz} instance
+        # passing the {#content_for_scanner}
+        # and calls +parse+ on it.
+        #
+        # @return [Hash]
+        def parse
+          Scanners::WhoisNicCz.new(content_for_scanner).parse
+        end
+
+      private
+
+        def build_contact(element, type)
+          node("contact-#{element}") do |str|
+            address = str["address"].kind_of?(Array) ? str["address"].join("\n") : str["address"]
+            Record::Contact.new(
+              :id           => element,
+              :type         => type,
+              :name         => str["name"],
+              :organization => str["org"],
+              :address      => address,
+              :email        => str["e-mail"],
+              :phone        => str["phone"],
+              :fax          => str["fax-no"],
+              # :city         => address[1],
+              # :zip          => address[2],
+              # :state        => address[3],
+              # :country_code => address[4],
+              :created_on   => str["created"] ? Time.parse(str["created"]) : nil,
+              :updated_on   => str["Last Update"] ? Time.parse(str["Last Update"]) : nil
+            )
           end
         end
 
