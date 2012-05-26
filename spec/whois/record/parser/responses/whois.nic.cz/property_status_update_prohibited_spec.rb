@@ -23,7 +23,7 @@ describe Whois::Record::Parser::WhoisNicCz, "property_status_update_prohibited.e
 
   describe "#status" do
     it do
-      @parser.status.should == :registered
+      @parser.status.should == [:registered, :server_transfer_prohibited]
     end
   end
   describe "#available?" do

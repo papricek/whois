@@ -1,5 +1,5 @@
 #status
-  should: %s == :registered
+  should: %s == [:registered, :server_transfer_prohibited]
 
 #available?
   should: %s == false

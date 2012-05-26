@@ -23,7 +23,7 @@ describe Whois::Record::Parser::WhoisNicCz, "status_available.expected" do
 
   describe "#status" do
     it do
-      @parser.status.should == :available
+      @parser.status.should == [:available]
     end
   end
   describe "#available?" do

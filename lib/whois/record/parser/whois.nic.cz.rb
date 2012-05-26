@@ -28,19 +28,19 @@ module Whois
       class WhoisNicCz < Base
 
         property_supported :status do
-          if content_for_scanner =~ /status:\s+(.+)\n/
-            case $1.downcase
+          status = content_for_scanner.scan(/status:\s+(.+)\n/).flatten.map do |line|
+            case line.downcase
               when "paid and in zone", "update prohibited"
                 :registered
-              # NEWSTATUS
+              when "sponsoring registrar change prohibited"
+                :server_transfer_prohibited
               when "expired"
                 :expired
               else
-                Whois.bug!(ParserError, "Unknown status `#{$1}'.")
+                Whois.bug!(ParserError, "Unknown status `#{line}'.")
             end
-          else
-            :available
           end
+          status.empty? ? [:available] : status
         end
 
         property_supported :available? do

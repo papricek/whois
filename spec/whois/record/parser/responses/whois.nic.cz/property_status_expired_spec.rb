@@ -23,7 +23,7 @@ describe Whois::Record::Parser::WhoisNicCz, "property_status_expired.expected" d
 
   describe "#status" do
     it do
-      @parser.status.should == :expired
+      @parser.status.should == [:expired]
     end
   end
   describe "#available?" do

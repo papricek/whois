@@ -1,5 +1,6 @@
 #status
-  should: %s == :registered
+  should: %s CLASS(array)
+  should: %s == [:registered]
 
 #available?
   should: %s == false
