@@ -71,6 +71,11 @@ module Whois
             @content = {}
             while @input.match?(/\A[a-z].+?: .*?\n/) && @input.scan(/\A([a-z].+?): (.*?)\n/)
               key, value = @input[1].strip, @input[2].strip
+              if (key == 'address' || key == 'name') &&
+                while @input.match?(/\A([[[:upper:]][[:lower:]][[:digit:]][[:space:]]]*?)\n/) && @input.scan(/\A([[[:upper:]][[:lower:]][[:digit:]][[:space:]]]*?)\n/)
+                  value = [value, @input[1]].join(" ")
+                end
+              end
               if @content[key].nil?
                 @content[key] = value
               else

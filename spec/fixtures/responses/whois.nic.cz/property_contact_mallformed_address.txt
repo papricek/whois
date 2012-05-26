@@ -1,0 +1,60 @@
+%  (c) 2006-2011 CZ.NIC, z.s.p.o.
+% 
+% Intended use of supplied data and information
+% 
+% Data contained in the domain name register, as well as information
+% supplied through public information services of CZ.NIC association,
+% are appointed only for purposes connected with Internet network
+% administration and operation, or for the purpose of legal or other
+% similar proceedings, in process as regards a matter connected
+% particularly with holding and using a concrete domain name.
+% 
+% Full text available at:
+% http://www.nic.cz/page/306/intended-use-of-supplied-data-and-information/
+% 
+% See also a search service at http://www.nic.cz/whois/
+% 
+% 
+% Whoisd Server Version: 3.4.0
+% Timestamp: Sat May 26 23:25:38 2012
+
+domain:       antistresin.cz
+registrant:   FORPSI-BCJ-S268176
+nsset:        PROFITUX
+registrar:    REG-INTERNET-CZ
+status:       paid and in zone
+registered:   03.06.2010 21:41:06
+changed:      27.10.2010 16:28:41
+expire:       03.06.2012
+
+contact:      FORPSI-BCJ-S268176
+org:          VIABELA s.r.o.
+name:         Patrik Szweda
+address:      Zavodní 2453/28
+address:      Kaviná-Nové Město
+
+address:      73506
+address:      CZ
+registrar:    REG-INTERNET-CZ
+created:      19.02.2008 22:57:03
+
+nsset:        PROFITUX
+nserver:      ns1.profitux.cz 
+nserver:      ns2.profitux.cz 
+tech-c:       ALESVITEK
+registrar:    REG-IGNUM
+created:      01.10.2007 13:34:04
+
+contact:      ALESVITEK
+name:         Ales Vitek
+address:      Zborovska 829
+address:      Kurim
+address:      66434
+address:      CZ
+phone:        +420 603917116
+e-mail:       ales_vitek@volny.cz
+registrar:    REG-IGNUM
+created:      10.08.2001 22:13:00
+changed:      31.10.2004 19:35:00
+
+

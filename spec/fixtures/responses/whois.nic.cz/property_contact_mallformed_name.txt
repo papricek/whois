@@ -1,0 +1,47 @@
+%  (c) 2006-2011 CZ.NIC, z.s.p.o.
+% 
+% Intended use of supplied data and information
+% 
+% Data contained in the domain name register, as well as information
+% supplied through public information services of CZ.NIC association,
+% are appointed only for purposes connected with Internet network
+% administration and operation, or for the purpose of legal or other
+% similar proceedings, in process as regards a matter connected
+% particularly with holding and using a concrete domain name.
+% 
+% Full text available at:
+% http://www.nic.cz/page/306/intended-use-of-supplied-data-and-information/
+% 
+% See also a search service at http://www.nic.cz/whois/
+% 
+% 
+% Whoisd Server Version: 3.4.0
+% Timestamp: Sun May 27 03:55:50 2012
+
+domain:       bikestyle.cz
+registrant:   CID:IGN-C173041-OQ1
+nsset:        NSSID:IGN-N7799-THD
+registrar:    REG-IGNUM
+status:       paid and in zone
+registered:   07.12.2007 09:42:07
+expire:       07.12.2012
+
+contact:      CID:IGN-C173041-OQ1
+name:         Hynek Hluchý logo
+Hynek Hynek Hluchý logo
+Hluchý
+address:      Na Pomezí 66
+address:      Opava
+address:      747 06
+address:      CZ
+registrar:    REG-IGNUM
+created:      07.12.2007 09:40:07
+
+nsset:        NSSID:IGN-N7799-THD
+nserver:      ns1.shopsys.cz 
+nserver:      ns2.shopsys.cz 
+tech-c:       CID:IGN-C173041-OQ1
+registrar:    REG-IGNUM
+created:      07.12.2007 09:41:06
+
+
