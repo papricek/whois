@@ -25,6 +25,7 @@ module Whois
           'update prohibited' => :registered,
           'expired' => :expired,
           'to be deleted' => :expired,
+          "The domain isn't generated in the zone" => :expired
         }
       end
 
