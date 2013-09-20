@@ -51,6 +51,8 @@ module Whois
                 :server_update_prohibited
               when "registrant change prohibited"
                 :server_registrant_change_prohibited
+              when "registrant change forbidden"
+                :server_registrant_change_forbidden
               when "domain blocked"
                 :server_blocked
               when "domain is administratively kept out of zone"
@@ -67,7 +69,7 @@ module Whois
                 :out_of_zone
               when "the domain is administratively kept in zone"
                 :kept_in_zone
-              when "renewal forbidden"
+              when "registration renewal forbidden"
                 :renewal_forbidden
               when "deletion forbidden"
                 :deletion_forbidden
