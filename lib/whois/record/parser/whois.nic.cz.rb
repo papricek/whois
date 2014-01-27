@@ -94,15 +94,15 @@ module Whois
         end
 
         property_supported :created_on do
-          node("registered") { |str| Time.parse(str) }
+          node("registered") { |str| Time.zone.parse(str) }
         end
 
         property_supported :updated_on do
-          node("changed") { |str| Time.parse(str) }
+          node("changed") { |str| Time.zone.parse(str) }
         end
 
         property_supported :expires_on do
-          node("expire") { |str| Time.parse(str) }
+          node("expire") { |str| Time.zone.parse(str) }
         end
 
         property_supported :registrar do
@@ -171,8 +171,8 @@ module Whois
               # :zip          => address[2],
               # :state        => address[3],
               # :country_code => address[4],
-              :created_on   => str["created"] ? Time.parse(str["created"]) : nil,
-              :updated_on   => str["Last Update"] ? Time.parse(str["Last Update"]) : nil
+              :created_on   => str["created"] ? Time.zone.parse(str["created"]) : nil,
+              :updated_on   => str["Last Update"] ? Time.zone.parse(str["Last Update"]) : nil
             )
           end
         end
