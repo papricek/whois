@@ -86,8 +86,8 @@ module Whois
           name = content_for_scanner.match(/^Tech-name\s+(.+)\n/)[1] rescue nil
 
           Record::Registrar.new(
-            :id           => id,
-            :name         => name
+            :id   => id,
+            :name => name
           )
         end
 
@@ -100,11 +100,11 @@ module Whois
 
           [
             Record::Contact.new(
-              :id           => id,
-              :name         => name,
-              :address      => address,
-              :phone      => phone,
-              :email      => email
+              :id       => id,
+              :name     => name,
+              :address  => address,
+              :phone    => phone,
+              :email    => email
             )
           ]
         end
