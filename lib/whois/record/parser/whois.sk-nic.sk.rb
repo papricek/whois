@@ -48,6 +48,7 @@ module Whois
             when  "dom_warn"  then :registered
             # The domain is expired and has not been renewed (14 days).
             when  "dom_lnot"  then :registered
+            when  "dom_tran"  then :registered
             when  "dom_exp"   then :expired
             # The domain losts its registrar (28 days).
             when  "dom_held"  then :redemption
